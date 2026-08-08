@@ -27,10 +27,13 @@ Brand-identifying names and artwork remain subject to the rights described in [`
 | --- | --- |
 | `docs/images/appllama-logo-dark.png` | Official Appllama logo downloaded from `https://public.appllama.io/appllama-logo-dark.png` for dark GitHub surfaces. |
 | `docs/images/appllama-logo-light.png` | Official Appllama light-surface logo variant downloaded from `https://public.appllama.io/appllama-logo-light.png`. |
-| `docs/images/welcome-screens-showcase-01.png` | 1536×1024 GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
-| `docs/images/welcome-screens-showcase-02.png` | 1536×1024 GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
+| `docs/images/showcase-backdrop.png` | Shared 1536×1024 neutral studio backdrop created with GPT Image 2 through the Codex ImageGen workflow. It contains no phones, interfaces, logos, words, icons, or referenced product artwork. |
+| `docs/images/welcome-screens-showcase-01.png` | Deterministic 1536×1024 AppKit composite of exact simulator captures from this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
+| `docs/images/welcome-screens-showcase-02.png` | Deterministic 1536×1024 AppKit composite of exact simulator captures from this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
 
-The two showcase prompts treated each simulator capture as a rigid screen layer and requested one matched 3:2 set: identical near-black studio backgrounds, realistic iPhone proportions, equal optical scale, aligned baselines, restrained shadows, and no added title, logo, label, watermark, or new interface content. The original third-party reference captures were not provided to the generation step and are not embedded in these README assets.
+The two panels are rendered by [`scripts/render-showcase.swift`](../scripts/render-showcase.swift). Every 1206×2622 simulator capture is uniformly scaled to 276×600.06 pixels, clipped only by the device corner mask, and composited over the same backdrop. The script does not use perspective deformation, independent horizontal or vertical scaling, or generative reconstruction of any interface pixels. This preserves Yazio's real wordmark geometry and the complete Speak & Learn testimonial, laurels, rating, download card, portrait, copy, and controls.
+
+Only the shared empty backdrop was generated. The original third-party reference captures were not provided to that generation step and are not embedded in these README assets.
 
 ## Reference inputs
 
