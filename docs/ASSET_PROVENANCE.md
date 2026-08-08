@@ -27,10 +27,10 @@ Brand-identifying names and artwork remain subject to the rights described in [`
 | --- | --- |
 | `docs/images/appllama-logo-dark.png` | Official Appllama logo downloaded from `https://public.appllama.io/appllama-logo-dark.png` for dark GitHub surfaces. |
 | `docs/images/appllama-logo-light.png` | Official Appllama light-surface logo variant downloaded from `https://public.appllama.io/appllama-logo-light.png`. |
-| `docs/images/welcome-screens-showcase-01.png` | GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
-| `docs/images/welcome-screens-showcase-02.png` | GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
+| `docs/images/welcome-screens-showcase-01.png` | 1536×1024 GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
+| `docs/images/welcome-screens-showcase-02.png` | 1536×1024 GPT Image 2 composition generated through the Codex ImageGen workflow from simulator captures of this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
 
-The two showcase prompts treated each simulator capture as a rigid screen layer and requested a neutral charcoal editorial arrangement with no added title, logo, label, watermark, or new interface content. The original third-party reference captures were not provided to the generation step and are not embedded in these README assets.
+The two showcase prompts treated each simulator capture as a rigid screen layer and requested one matched 3:2 set: identical near-black studio backgrounds, realistic iPhone proportions, equal optical scale, aligned baselines, restrained shadows, and no added title, logo, label, watermark, or new interface content. The original third-party reference captures were not provided to the generation step and are not embedded in these README assets.
 
 ## Reference inputs
 
