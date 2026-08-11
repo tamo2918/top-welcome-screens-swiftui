@@ -1,6 +1,8 @@
-# Recovered motion specification
+# Recovered SwiftUI motion specification
 
 Times are measured from the supplied 30 fps clips. Small codec-only pixel changes are excluded.
+
+The native views feed these absolute millisecond boundaries into `MotionTimeline`. `autoplay: false` and Reduce Motion resolve directly to the completed duration; hard cuts below remain hard cuts.
 
 ## Duolingo — 2.667 s
 

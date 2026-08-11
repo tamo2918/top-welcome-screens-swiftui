@@ -2,7 +2,7 @@
 
 All raster artwork under `assets/welcome` was newly created for this project with GPT Image 2 through the Codex ImageGen workflow. Production app assets were not copied into the repository. Transparent outputs were validated over light and dark backgrounds; a few were losslessly cropped to remove unused transparent padding before layout calibration.
 
-The original neutral project icon in `assets/images/welcome-gallery-icon.png` and its favicon derivative were also created with GPT Image 2. They contain no referenced product branding.
+The neutral native app icon in `WelcomeScreenGallery/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png` was also created with GPT Image 2. It contains no referenced product branding.
 
 | Screen | Generated files |
 | --- | --- |
@@ -28,8 +28,8 @@ Brand-identifying names and artwork remain subject to the rights described in [`
 | `docs/images/appllama-logo-dark.png` | Official Appllama logo downloaded from `https://public.appllama.io/appllama-logo-dark.png` for dark GitHub surfaces. |
 | `docs/images/appllama-logo-light.png` | Official Appllama light-surface logo variant downloaded from `https://public.appllama.io/appllama-logo-light.png`. |
 | `docs/images/showcase-backdrop.png` | Shared 1536×1024 neutral studio backdrop created with GPT Image 2 through the Codex ImageGen workflow. It contains no phones, interfaces, logos, words, icons, or referenced product artwork. |
-| `docs/images/welcome-screens-showcase-01.png` | Deterministic 1536×1024 AppKit composite of exact simulator captures from this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
-| `docs/images/welcome-screens-showcase-02.png` | Deterministic 1536×1024 AppKit composite of exact simulator captures from this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
+| `docs/images/welcome-screens-showcase-01.png` | Deterministic 1536×1024 AppKit composite of exact native SwiftUI simulator captures from this repository's Duolingo, Strava, MyFitnessPal, Perplexity, and Yazio implementations. |
+| `docs/images/welcome-screens-showcase-02.png` | Deterministic 1536×1024 AppKit composite of exact native SwiftUI simulator captures from this repository's onX Hunt, Speak & Learn, Hallow, SCRL, and Speak: Language Learning implementations. |
 
 The two panels are rendered by [`scripts/render-showcase.swift`](../scripts/render-showcase.swift). Every 1206×2622 simulator capture is uniformly scaled to 276×600.06 pixels, clipped only by the device corner mask, and composited over the same backdrop. The script does not use perspective deformation, independent horizontal or vertical scaling, or generative reconstruction of any interface pixels. This preserves Yazio's real wordmark geometry and the complete Speak & Learn testimonial, laurels, rating, download card, portrait, copy, and controls.
 
