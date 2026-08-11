@@ -28,6 +28,20 @@ This repository contains no React Native runtime, Expo router, JavaScript bridge
 
 The implementation keeps the measured 640×1385 reference coordinate space so every recovered layout value and motion keyframe stays readable. `ReferenceCanvas` scales that canvas uniformly to the current iPhone display, while `MotionTimeline` exposes deterministic elapsed milliseconds to each screen.
 
+## AI agent access through MCP
+
+The repository includes an optional local, read-only MCP server for coding agents. It exposes the canonical screen catalog, selected Swift source, exact motion and interaction gates, assets, fonts, integration plans, validation, and reusable prompts without giving the server arbitrary filesystem or write access.
+
+The MCP process is separate Python development tooling. It is not linked into the iOS target and does not add a runtime dependency to the native SwiftUI app.
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -e Tools/WelcomeScreensMCP
+.venv/bin/python Tools/WelcomeScreensMCP/scripts/stdio_smoke.py
+```
+
+See the [MCP setup and capability reference](./Tools/WelcomeScreensMCP/README.md) and the canonical [`welcome-screens.json`](./Catalog/welcome-screens.json).
+
 ## Requirements
 
 - Xcode 26.4 or newer

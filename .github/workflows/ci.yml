@@ -5,11 +5,14 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Show toolchain
         run: xcodebuild -version
@@ -37,3 +40,23 @@ jobs:
             -destination "platform=iOS Simulator,id=$simulator_id" \
             CODE_SIGNING_ALLOWED=NO \
             test
+
+  mcp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: Tools/WelcomeScreensMCP/pyproject.toml
+
+      - name: Install MCP server
+        run: python -m pip install --disable-pip-version-check -e Tools/WelcomeScreensMCP
+
+      - name: Run catalog and MCP protocol tests
+        run: python -m unittest discover -s Tools/WelcomeScreensMCP/tests -v
+
+      - name: Exercise the stdio transport
+        run: python Tools/WelcomeScreensMCP/scripts/stdio_smoke.py

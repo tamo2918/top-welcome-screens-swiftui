@@ -28,6 +28,20 @@
 
 解析したレイアウト値とモーションのキーフレームを読みやすい状態で保持するため、基準となる640×1385の座標空間を維持しています。`ReferenceCanvas`が現在のiPhone画面へ座標空間を均等に拡大・縮小し、`MotionTimeline`が各画面へ決定的な経過時間をミリ秒単位で渡します。
 
+## MCPによるAIエージェント連携
+
+コーディングエージェント向けに、任意で利用できるローカル・読み取り専用MCPサーバーを同梱しています。画面カタログ、選択したSwiftソース、正確なモーションと操作ゲート、アセット、フォント、組み込み計画、検証、再利用可能なプロンプトを提供します。任意のファイルシステムアクセスや書き込み権限は与えません。
+
+MCPは独立したPython製開発ツールです。iOSターゲットにはリンクされず、ネイティブSwiftUIアプリの実行時依存関係には追加されません。
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -e Tools/WelcomeScreensMCP
+.venv/bin/python Tools/WelcomeScreensMCP/scripts/stdio_smoke.py
+```
+
+詳しくは[MCPの設定・機能リファレンス](./Tools/WelcomeScreensMCP/README.md)と、正本となる[`welcome-screens.json`](./Catalog/welcome-screens.json)を参照してください。
+
 ## 動作要件
 
 - Xcode 26.4以降

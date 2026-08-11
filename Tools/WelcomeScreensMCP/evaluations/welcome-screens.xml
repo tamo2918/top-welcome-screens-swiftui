@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation>
+  <qa_pair>
+    <question>Compare every study with a measured timeline and identify the one whose controls become usable after the latest hard cut. Return only its display name.</question>
+    <answer>MyFitnessPal</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Find the only study for which adding an entrance transition would contradict the available research evidence. Return only its screen ID.</question>
+    <answer>perplexity</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Among animated studies, compare all semantic-action gates and find the one exposing its first action earliest. Return only its display name.</question>
+    <answer>Speak: Language Learning</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Find the authentication study that combines Apple, Google, email, and SSO options with separate privacy and terms actions. Return only its screen ID.</question>
+    <answer>perplexity</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Count the unique semantic actions across all catalog entries and verify that count against the project metadata. Return only the integer.</question>
+    <answer>33</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Find the animated study that requires both font families, exposes five actions, and dissolves a loader into its final page. Return only its screen ID.</question>
+    <answer>hallow</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Compare all measured durations and identify the shortest animated study, then return only its display name.</question>
+    <answer>onX Hunt</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Find the study containing two separate horizontal onboarding-page changes followed by a final CTA fade. Return only its screen ID.</question>
+    <answer>speak-language</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Count the studies that expose a semantic action for continuing with Apple. Return only the integer.</question>
+    <answer>3</answer>
+  </qa_pair>
+  <qa_pair>
+    <question>Compare the whitelisted raster assets for every study and identify the screen with the largest asset count. Return only its screen ID.</question>
+    <answer>yazio</answer>
+  </qa_pair>
+</evaluation>

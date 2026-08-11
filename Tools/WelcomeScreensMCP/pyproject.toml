@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "welcome-screens-mcp"
+version = "1.0.0"
+description = "Read-only MCP server for the Top Welcome Screens SwiftUI catalog"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-only"
+authors = [
+  { name = "Top Welcome Screens contributors" }
+]
+dependencies = [
+  "mcp==2.0.0",
+  "pydantic>=2.12,<3"
+]
+
+[project.scripts]
+welcome-screens-mcp = "welcome_screens_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+welcome_screens_mcp = ["py.typed"]

@@ -14,5 +14,8 @@ Before editing a welcome screen:
 8. Do not replace calibrated sequences with a generic fade, spring, or transition.
 9. Build, run Swift Testing, and visually verify both the animated and deterministic final states on an iPhone simulator.
 10. Preserve the educational-use notice and generated-asset provenance.
+11. Keep `Catalog/welcome-screens.json` synchronized with screen IDs, durations, actions, source files, assets, and fonts.
+12. Keep `Tools/WelcomeScreensMCP` read-only. Do not add arbitrary path access, shell execution, network fetches, or write tools without an explicit product requirement.
+13. After catalog or MCP changes, run the Python consistency and MCP protocol tests documented in `Tools/WelcomeScreensMCP/README.md`.
 
 The shared Xcode scheme is `WelcomeScreenGallery`. Deterministic QA uses `-welcome-screen <id> -welcome-motion 0`; animation replay uses `-welcome-motion 1 -welcome-replay <changed integer>`.

@@ -161,6 +161,28 @@ Validate these invariants:
 - Reduce Motion skips directly to the usable final state;
 - no new crash report appears during a full ten-screen pass.
 
+## Machine-readable AI context
+
+`Catalog/welcome-screens.json` is the canonical machine-readable registry for MCP consumers. It records every screen ID, native view, duration, motion event, interaction gate, semantic action, source file, asset, and font. Its JSON Schema is `Catalog/welcome-screens.schema.json`.
+
+The optional local server under `Tools/WelcomeScreensMCP` exposes that catalog through read-only MCP Resources, Tools, and Prompts. Prefer the following AI workflow:
+
+1. Call `welcome_search_screens` to select one study.
+2. Call `welcome_get_integration_plan` for the exact screen ID.
+3. Read only the returned `welcome://screens/<id>/...` resources.
+4. Inspect the target app independently, then pass a non-sensitive summary to `welcome_validate_integration`.
+5. Implement, build, run Swift Testing, and perform deterministic and animated Simulator QA.
+
+When a screen changes, update the catalog in the same change and run:
+
+```bash
+.venv/bin/python -m unittest discover \
+  -s Tools/WelcomeScreensMCP/tests \
+  -v
+```
+
+The consistency suite fails if the catalog drifts from Swift screen IDs, durations, actions, fonts, assets, or repository paths.
+
 ## Ready-to-copy AI agent prompt
 
 ```text

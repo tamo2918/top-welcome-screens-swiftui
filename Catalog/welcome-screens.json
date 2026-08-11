@@ -1,0 +1,363 @@
+{
+  "$schema": "./welcome-screens.schema.json",
+  "catalogVersion": 1,
+  "project": {
+    "name": "Top Welcome Screens for SwiftUI",
+    "platform": "iOS",
+    "uiFramework": "SwiftUI",
+    "minimumDeploymentTarget": "16.4",
+    "referenceCanvas": {
+      "width": 640,
+      "height": 1385
+    },
+    "screenCount": 10,
+    "semanticActionCount": 33,
+    "motionSpecPath": "docs/MOTION_SPEC.md",
+    "integrationGuidePath": "docs/SWIFTUI_IMPLEMENTATION_GUIDE.md",
+    "legalNoticePath": "NOTICE.md",
+    "assetProvenancePath": "docs/ASSET_PROVENANCE.md"
+  },
+  "sharedFiles": [
+    {
+      "path": "WelcomeScreenGallery/Shared/ReferenceGeometry.swift",
+      "role": "Defines the 640×1385 reference coordinate system and absolute placement helpers.",
+      "requiredWhen": "always"
+    },
+    {
+      "path": "WelcomeScreenGallery/Shared/ReferenceCanvas.swift",
+      "role": "Uniformly scales, centers, and clips the reference canvas for the host display.",
+      "requiredWhen": "always"
+    },
+    {
+      "path": "WelcomeScreenGallery/Shared/ReplicaAssets.swift",
+      "role": "Resolves bundled replica images and fixed Inter or Nunito font aliases.",
+      "requiredWhen": "always"
+    },
+    {
+      "path": "WelcomeScreenGallery/Shared/ReplicaControls.swift",
+      "role": "Provides interaction-gated controls, icons, shared shapes, and color helpers.",
+      "requiredWhen": "always"
+    },
+    {
+      "path": "WelcomeScreenGallery/Shared/MotionTimeline.swift",
+      "role": "Supplies deterministic elapsed milliseconds, easing helpers, replay, and Reduce Motion behavior.",
+      "requiredWhen": "animated"
+    },
+    {
+      "path": "WelcomeScreenGallery/Domain/WelcomeAction.swift",
+      "role": "Defines typed semantic actions and host callback resolution.",
+      "requiredWhen": "recommended"
+    },
+    {
+      "path": "WelcomeScreenGallery/Domain/WelcomeScreenID.swift",
+      "role": "Registers gallery IDs, display names, and motion durations.",
+      "requiredWhen": "gallery-only"
+    },
+    {
+      "path": "WelcomeScreenGallery/Features/WelcomeScreen.swift",
+      "role": "Switches between all registered gallery studies.",
+      "requiredWhen": "gallery-only"
+    }
+  ],
+  "screens": [
+    {
+      "id": "duolingo",
+      "displayName": "Duolingo",
+      "swiftUIView": "DuolingoWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/DuolingoWelcome.swift",
+      "categories": ["splash", "welcome"],
+      "animated": true,
+      "durationMilliseconds": 2667,
+      "assets": [
+        "assets/welcome/duolingo/mascot-closed.png",
+        "assets/welcome/duolingo/mascot.png",
+        "assets/welcome/duolingo/splash-face-closed.png",
+        "assets/welcome/duolingo/splash-face.png",
+        "assets/welcome/duolingo/wordmark.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_900Black.ttf"
+      ],
+      "actions": [
+        { "id": "duolingo.get-started", "label": "Get started", "availableFromMilliseconds": 1233 },
+        { "id": "duolingo.log-in", "label": "Log in", "availableFromMilliseconds": 1233 }
+      ],
+      "motion": [
+        { "startMilliseconds": 400, "endMilliseconds": 567, "effect": "blink", "description": "First owl blink." },
+        { "startMilliseconds": 900, "endMilliseconds": 1033, "effect": "scale-out", "description": "Centered splash face accelerates down in scale." },
+        { "startMilliseconds": 1133, "endMilliseconds": 1233, "effect": "circular-mask-reveal", "description": "Completed page expands through a circular mask." },
+        { "startMilliseconds": 2467, "endMilliseconds": 2600, "effect": "blink", "description": "Final mascot blink." }
+      ],
+      "notes": "Preserve both blink phases and the circular reveal; controls become interactive when the reveal completes."
+    },
+    {
+      "id": "strava",
+      "displayName": "Strava",
+      "swiftUIView": "StravaWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/StravaWelcome.swift",
+      "categories": ["splash", "loading", "welcome"],
+      "animated": true,
+      "durationMilliseconds": 6600,
+      "assets": [
+        "assets/welcome/strava/hero.png",
+        "assets/welcome/strava/wordmark.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf"
+      ],
+      "actions": [
+        { "id": "strava.join-for-free", "label": "Join for free", "availableFromMilliseconds": 5133 },
+        { "id": "strava.log-in", "label": "Log in", "availableFromMilliseconds": 5133 }
+      ],
+      "motion": [
+        { "startMilliseconds": 0, "endMilliseconds": 833, "effect": "static-splash", "description": "Static orange logo splash." },
+        { "startMilliseconds": 867, "endMilliseconds": 5133, "effect": "spinner", "description": "Activity spinner rotates below the logo." },
+        { "startMilliseconds": 5133, "effect": "hard-cut", "description": "Hard cut to the completed page." }
+      ],
+      "notes": "The transition at 5.133 seconds is a hard cut, not a crossfade."
+    },
+    {
+      "id": "myfitnesspal",
+      "displayName": "MyFitnessPal",
+      "swiftUIView": "MyFitnessPalWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/MyFitnessPalWelcome.swift",
+      "categories": ["loading", "welcome", "onboarding"],
+      "animated": true,
+      "durationMilliseconds": 8867,
+      "assets": [
+        "assets/welcome/myfitnesspal/card.png",
+        "assets/welcome/myfitnesspal/next-card.png",
+        "assets/welcome/myfitnesspal/wordmark.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_700Bold.ttf"
+      ],
+      "actions": [
+        { "id": "myfitnesspal.sign-up-for-free", "label": "Sign up for free", "availableFromMilliseconds": 7333 },
+        { "id": "myfitnesspal.log-in", "label": "Log in", "availableFromMilliseconds": 7333 }
+      ],
+      "motion": [
+        { "startMilliseconds": 0, "endMilliseconds": 2900, "effect": "loading-copy", "description": "Blue loader reads Updating...." },
+        { "startMilliseconds": 2900, "effect": "hard-copy-switch", "description": "Loader copy switches to Loading... without a dissolve." },
+        { "startMilliseconds": 7333, "effect": "hard-cut", "description": "Hard cut to the completed carousel page." }
+      ],
+      "notes": "Keep the copy change and final page transition as hard switches."
+    },
+    {
+      "id": "perplexity",
+      "displayName": "Perplexity",
+      "swiftUIView": "PerplexityWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/PerplexityWelcome.swift",
+      "categories": ["welcome", "authentication"],
+      "animated": false,
+      "durationMilliseconds": null,
+      "assets": [
+        "assets/welcome/perplexity/brand-lockup.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_500Medium.ttf"
+      ],
+      "actions": [
+        { "id": "perplexity.close", "label": "Close", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.continue-with-apple", "label": "Continue with Apple", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.continue-with-google", "label": "Continue with Google", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.sign-in-with-email", "label": "Sign in with email", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.single-sign-on", "label": "Single sign-on", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.privacy-policy", "label": "Privacy policy", "availableFromMilliseconds": 0 },
+        { "id": "perplexity.terms-of-service", "label": "Terms of service", "availableFromMilliseconds": 0 }
+      ],
+      "motion": [],
+      "notes": "Still-only by design because the research set contains no motion reference. Do not invent an entrance animation."
+    },
+    {
+      "id": "yazio",
+      "displayName": "Yazio",
+      "swiftUIView": "YazioWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/YazioWelcome.swift",
+      "categories": ["splash", "welcome", "onboarding"],
+      "animated": true,
+      "durationMilliseconds": 1733,
+      "assets": [
+        "assets/welcome/yazio/apples.png",
+        "assets/welcome/yazio/calendar.png",
+        "assets/welcome/yazio/carrot.png",
+        "assets/welcome/yazio/chef-hat.png",
+        "assets/welcome/yazio/clock.png",
+        "assets/welcome/yazio/intro-mascot.png",
+        "assets/welcome/yazio/wordmark.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_800ExtraBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_900Black.ttf"
+      ],
+      "actions": [
+        { "id": "yazio.get-started", "label": "Get started", "availableFromMilliseconds": 1733 },
+        { "id": "yazio.log-in", "label": "Log in", "availableFromMilliseconds": 1733 }
+      ],
+      "motion": [
+        { "startMilliseconds": 567, "endMilliseconds": 800, "effect": "cross-dissolve", "description": "Splash dissolves into the destination shell." },
+        { "startMilliseconds": 1167, "endMilliseconds": 1733, "effect": "staggered-springs", "description": "Food and utility illustrations enter as separately staggered damped springs." }
+      ],
+      "notes": "Preserve the independent spring timing for carrot, apples, clock, calendar, and chef hat."
+    },
+    {
+      "id": "onx-hunt",
+      "displayName": "onX Hunt",
+      "swiftUIView": "OnxHuntWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/OnxHuntWelcome.swift",
+      "categories": ["splash", "authentication"],
+      "animated": true,
+      "durationMilliseconds": 1467,
+      "assets": [
+        "assets/welcome/onx-hunt/brand-lockup.png",
+        "assets/welcome/onx-hunt/terrain.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_900Black.ttf"
+      ],
+      "actions": [
+        { "id": "onx-hunt.continue-with-apple", "label": "Continue with Apple", "availableFromMilliseconds": 1067 },
+        { "id": "onx-hunt.continue-with-google", "label": "Continue with Google", "availableFromMilliseconds": 1067 },
+        { "id": "onx-hunt.sign-up-with-email", "label": "Sign up with email", "availableFromMilliseconds": 1067 },
+        { "id": "onx-hunt.log-in", "label": "Log in", "availableFromMilliseconds": 1067 }
+      ],
+      "motion": [
+        { "startMilliseconds": 0, "endMilliseconds": 1033, "effect": "static-splash", "description": "Static orange-red logo splash." },
+        { "startMilliseconds": 1067, "effect": "hard-cut", "description": "Hard cut to the completed sign-in page." }
+      ],
+      "notes": "The sign-in surface must appear as a hard cut after the static splash."
+    },
+    {
+      "id": "speak-learn",
+      "displayName": "Speak & Learn",
+      "swiftUIView": "SpeakLearnWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/SpeakLearnWelcome.swift",
+      "categories": ["splash", "welcome", "authentication"],
+      "animated": true,
+      "durationMilliseconds": 4940,
+      "assets": [
+        "assets/welcome/speak-learn/avatar.png",
+        "assets/welcome/speak-learn/hero.png",
+        "assets/welcome/speak-learn/logo-mark.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_700Bold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_800ExtraBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_900Black.ttf"
+      ],
+      "actions": [
+        { "id": "speak-learn.log-in", "label": "Log in", "availableFromMilliseconds": 3800 },
+        { "id": "speak-learn.lets-go", "label": "Let's go", "availableFromMilliseconds": 3800 },
+        { "id": "speak-learn.privacy-policy", "label": "Privacy policy", "availableFromMilliseconds": 3800 },
+        { "id": "speak-learn.terms-of-service", "label": "Terms of service", "availableFromMilliseconds": 3800 }
+      ],
+      "motion": [
+        { "startMilliseconds": 100, "endMilliseconds": 967, "effect": "logo-build", "description": "Layered vertical mark rotates and grows into place." },
+        { "startMilliseconds": 1133, "endMilliseconds": 1567, "effect": "bubble-enter", "description": "Lower-right speech bubble grows and slides out." },
+        { "startMilliseconds": 3267, "endMilliseconds": 3533, "effect": "bubble-fade", "description": "Speech bubble fades away." },
+        { "startMilliseconds": 3567, "endMilliseconds": 3800, "effect": "page-slide", "description": "Complete welcome page slides in from the right with a strong ease-out." }
+      ],
+      "notes": "The generated logo transitions to the bundled mark before the complete page slide."
+    },
+    {
+      "id": "hallow",
+      "displayName": "Hallow",
+      "swiftUIView": "HallowWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/HallowWelcome.swift",
+      "categories": ["splash", "loading", "authentication"],
+      "animated": true,
+      "durationMilliseconds": 4500,
+      "assets": [
+        "assets/welcome/hallow/scene.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_700Bold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Nunito_900Black.ttf"
+      ],
+      "actions": [
+        { "id": "hallow.close", "label": "Close", "availableFromMilliseconds": 3033 },
+        { "id": "hallow.continue-with-email", "label": "Continue with email", "availableFromMilliseconds": 3033 },
+        { "id": "hallow.continue-with-apple", "label": "Continue with Apple", "availableFromMilliseconds": 3033 },
+        { "id": "hallow.continue-with-google", "label": "Continue with Google", "availableFromMilliseconds": 3033 },
+        { "id": "hallow.terms", "label": "Terms", "availableFromMilliseconds": 3033 }
+      ],
+      "motion": [
+        { "startMilliseconds": 233, "endMilliseconds": 467, "effect": "color-interpolation", "description": "Splash purple interpolates from #9F3BE9 to #9240E0." },
+        { "startMilliseconds": 1233, "effect": "loader-appear", "description": "Loader dots appear; version text follows at 1.400 seconds." },
+        { "startMilliseconds": 1633, "endMilliseconds": 2367, "effect": "dot-pulse", "description": "One scale pulse travels left to right across the dots." },
+        { "startMilliseconds": 2767, "endMilliseconds": 3033, "effect": "loader-dissolve", "description": "Whole loader dissolves into the completed page." }
+      ],
+      "notes": "This study uses both Inter and Nunito; copy every listed font to preserve the generated wordmark and controls."
+    },
+    {
+      "id": "scrl",
+      "displayName": "SCRL",
+      "swiftUIView": "ScrlWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/ScrlWelcome.swift",
+      "categories": ["splash", "loading", "welcome"],
+      "animated": true,
+      "durationMilliseconds": 1999,
+      "assets": [
+        "assets/welcome/scrl/mosaic.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_500Medium.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_700Bold.ttf"
+      ],
+      "actions": [
+        { "id": "scrl.get-started", "label": "Get started", "availableFromMilliseconds": 1800 },
+        { "id": "scrl.sign-in", "label": "Sign in", "availableFromMilliseconds": 1800 }
+      ],
+      "motion": [
+        { "startMilliseconds": 0, "endMilliseconds": 1167, "effect": "static-splash", "description": "Static black logo splash." },
+        { "startMilliseconds": 1200, "effect": "hard-cut", "description": "Hard cut to the dark skeleton and home state." },
+        { "startMilliseconds": 1300, "endMilliseconds": 1800, "effect": "staggered-reveal", "description": "Background, awards, copy, and CTA reveal with separate ease-out opacity curves." }
+      ],
+      "notes": "Keep the skeleton cut and the following independent opacity curves distinct."
+    },
+    {
+      "id": "speak-language",
+      "displayName": "Speak: Language Learning",
+      "swiftUIView": "SpeakLanguageWelcome",
+      "sourcePath": "WelcomeScreenGallery/Features/Screens/SpeakLanguageWelcome.swift",
+      "categories": ["loading", "onboarding", "welcome"],
+      "animated": true,
+      "durationMilliseconds": 5070,
+      "assets": [
+        "assets/welcome/speak-language/lower-blur.png"
+      ],
+      "fontFiles": [
+        "WelcomeScreenGallery/Resources/Fonts/Inter_400Regular.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_600SemiBold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_700Bold.ttf",
+        "WelcomeScreenGallery/Resources/Fonts/Inter_800ExtraBold.ttf"
+      ],
+      "actions": [
+        { "id": "speak-language.sign-in", "label": "Sign in", "availableFromMilliseconds": 333 },
+        { "id": "speak-language.tap-to-continue", "label": "Tap to continue", "availableFromMilliseconds": 333, "availableUntilMilliseconds": 3400 },
+        { "id": "speak-language.start-speaking-today", "label": "Start speaking today", "availableFromMilliseconds": 4400 }
+      ],
+      "motion": [
+        { "startMilliseconds": 33, "endMilliseconds": 200, "effect": "splash-dissolve", "description": "Blue launch page dissolves to the white loading field." },
+        { "startMilliseconds": 333, "effect": "page-appear", "description": "First onboarding page appears." },
+        { "startMilliseconds": 2833, "endMilliseconds": 3100, "effect": "page-slide", "description": "Page one slides horizontally to page two." },
+        { "startMilliseconds": 3267, "endMilliseconds": 3533, "effect": "page-slide", "description": "Page two slides horizontally to page three." },
+        { "startMilliseconds": 3800, "endMilliseconds": 4400, "effect": "cta-fade", "description": "Final call-to-action fades in." }
+      ],
+      "notes": "This screen has separate interaction gates for sign-in, tap-to-continue, and the final CTA."
+    }
+  ]
+}
