@@ -1,14 +1,4 @@
 <p align="center">
-  <a href="https://appllama.io">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./docs/images/appllama-logo-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="./docs/images/appllama-logo-light.png">
-      <img src="./docs/images/appllama-logo-light.png" width="270" alt="Appllama">
-    </picture>
-  </a>
-</p>
-
-<p align="center">
   <a href="./README.md">English</a> · <strong>日本語</strong>
 </p>
 
