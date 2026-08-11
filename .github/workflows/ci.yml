@@ -7,14 +7,33 @@ on:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          cache: npm
-          node-version: 22.13.1
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm run export:web
+
+      - name: Show toolchain
+        run: xcodebuild -version
+
+      - name: Build native SwiftUI app
+        run: |
+          xcodebuild \
+            -project WelcomeScreenGallery.xcodeproj \
+            -scheme WelcomeScreenGallery \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Run Swift tests
+        shell: bash
+        run: |
+          simulator_id="$(xcrun simctl list devices available -j | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid // empty')"
+          if [[ -z "$simulator_id" ]]; then
+            echo "No available iPhone simulator runtime" >&2
+            exit 1
+          fi
+          xcodebuild \
+            -project WelcomeScreenGallery.xcodeproj \
+            -scheme WelcomeScreenGallery \
+            -destination "platform=iOS Simulator,id=$simulator_id" \
+            CODE_SIGNING_ALLOWED=NO \
+            test
